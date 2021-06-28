@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PlanetsContext from './PlanetsContext';
 
 const PlanetsProvider = ({ children }) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
 
   const fetchPlanets = async () => {
     const PLANETS_URL = 'https://swapi-trybe.herokuapp.com/api/planets/';
@@ -17,6 +17,7 @@ const PlanetsProvider = ({ children }) => {
 
   useEffect(() => {
     fetchPlanets();
+    console.log('render');
   }, []);
 
   const context = { data };
