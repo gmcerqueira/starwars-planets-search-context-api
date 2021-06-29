@@ -21,8 +21,35 @@ const PlanetsProvider = ({ children }) => {
   };
 
   const saveFilter = (column, comparison, value) => {
-    setFilterNumber([...filterNumber, { column, comparison, value }]);
+    setFilterNumber([...filterNumber, { column, comparison, value: Number(value) }]);
   };
+
+  const filteringByName = (planet) => (filterName
+    ? planet.name.toLowerCase().includes(filterName.toLowerCase())
+    : planet);
+
+  const returnFromFilter = (planet) => {
+    if (filterNumber.length === 0) return planet;
+    const filter = filterNumber[filterNumber.length - 1];
+    const { column, comparison, value } = filter;
+    const comparisonValue = Number(planet[column]);
+
+    switch (comparison) {
+    case 'maior que':
+      return comparisonValue > value;
+
+    case 'menor que':
+      return comparisonValue < value;
+
+    case 'igual a':
+      return comparisonValue === value;
+
+    default:
+      return planet;
+    }
+  };
+
+  // const filteringByNumber=(planet)=>filterNumber[filterNumber.length-1]?
 
   useEffect(() => {
     fetchPlanets();
@@ -34,7 +61,9 @@ const PlanetsProvider = ({ children }) => {
       filterName, filterNumber },
     setFilterName,
     handleNameInput,
-    saveFilter };
+    saveFilter,
+    filteringByName,
+    returnFromFilter };
   return (
     <PlanetsContext.Provider value={ context }>
       {children}

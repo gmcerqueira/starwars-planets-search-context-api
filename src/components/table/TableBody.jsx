@@ -4,16 +4,16 @@ import PlanetsContext from '../../context/PlanetsContext';
 const TableBody = () => {
   const {
     data,
-    filters: { filterName },
+    filteringByName,
+    returnFromFilter,
   } = useContext(PlanetsContext);
 
   return (
     <tbody>
       {data
         && data
-          .filter((planet) => (filterName
-            ? planet.name.toLowerCase().includes(filterName.toLowerCase())
-            : planet))
+          .filter((planet) => (filteringByName(planet)))
+          .filter((planet) => (returnFromFilter(planet)))
           .map(
             ({
               name,
