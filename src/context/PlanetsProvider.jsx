@@ -4,7 +4,8 @@ import PlanetsContext from './PlanetsContext';
 
 const PlanetsProvider = ({ children }) => {
   const [data, setData] = useState([]);
-  const [filterName, setFilterName] = useState();
+  const [filterName, setFilterName] = useState('');
+  const [filterNumber, setFilterNumber] = useState([]);
 
   const fetchPlanets = async () => {
     const PLANETS_URL = 'https://swapi-trybe.herokuapp.com/api/planets/';
@@ -19,12 +20,21 @@ const PlanetsProvider = ({ children }) => {
     setFilterName(target.value);
   };
 
+  const saveFilter = (column, comparison, value) => {
+    setFilterNumber([...filterNumber, { column, comparison, value }]);
+  };
+
   useEffect(() => {
     fetchPlanets();
     console.log('render');
   }, []);
 
-  const context = { data, filters: { filterName }, setFilterName, handleNameInput };
+  const context = { data,
+    filters: {
+      filterName, filterNumber },
+    setFilterName,
+    handleNameInput,
+    saveFilter };
   return (
     <PlanetsContext.Provider value={ context }>
       {children}
