@@ -21,7 +21,10 @@ const PlanetsProvider = ({ children }) => {
   };
 
   const saveFilter = (column, comparison, value) => {
-    setFilterNumber([...filterNumber, { column, comparison, value: Number(value) }]);
+    setFilterNumber([
+      ...filterNumber,
+      { column, comparison, value: Number(value) },
+    ]);
   };
 
   const filteringByName = (planet) => (filterName
@@ -49,21 +52,30 @@ const PlanetsProvider = ({ children }) => {
     }
   };
 
-  // const filteringByNumber=(planet)=>filterNumber[filterNumber.length-1]?
+  const returnAlreadyUsedFilter = (option) => {
+    const used = filterNumber.reduce((acc, curr) => [...acc, curr.column], []);
+
+    return !used.includes(option);
+  };
 
   useEffect(() => {
     fetchPlanets();
     console.log('render');
   }, []);
 
-  const context = { data,
+  const context = {
+    data,
     filters: {
-      filterName, filterNumber },
+      filterName,
+      filterNumber,
+    },
     setFilterName,
     handleNameInput,
     saveFilter,
     filteringByName,
-    returnFromFilter };
+    returnFromFilter,
+    returnAlreadyUsedFilter,
+  };
   return (
     <PlanetsContext.Provider value={ context }>
       {children}

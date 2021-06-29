@@ -2,7 +2,7 @@ import React, { createRef, useContext } from 'react';
 import PlanetsContext from '../../context/PlanetsContext';
 
 const FilterByNumber = () => {
-  const { saveFilter } = useContext(PlanetsContext);
+  const { saveFilter, returnAlreadyUsedFilter } = useContext(PlanetsContext);
 
   const renderOptions = (options) => options.map((option) => (
     <option key={ option } value={ option }>
@@ -16,7 +16,8 @@ const FilterByNumber = () => {
     'diameter',
     'rotation_period',
     'surface_water',
-  ];
+  ].filter((option) => returnAlreadyUsedFilter(option));
+
   const comparisonOptions = ['maior que', 'menor que', 'igual a'];
   const columnSelector = createRef();
   const comparisonSelector = createRef();
