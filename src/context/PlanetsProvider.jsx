@@ -60,7 +60,6 @@ const PlanetsProvider = ({ children }) => {
 
   useEffect(() => {
     fetchPlanets();
-    console.log('render');
   }, []);
 
   const context = {
