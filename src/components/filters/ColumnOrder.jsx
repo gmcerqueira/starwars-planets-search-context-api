@@ -1,23 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PlanetsContext from '../../context/PlanetsContext';
 
 const ColumnOrder = () => {
-  const { handleColumnSortChange, handleWaySortChange } = useContext(PlanetsContext);
-  const options = [
-    'Name',
-    'Rotation period',
-    'Orbital period',
-    'Diameter',
-    'Climate',
-    'Gravity',
-    'Terrain',
-    'Surface',
-    'Population',
-    'Films',
-    'Created',
-    'Edited',
-    'Url',
-  ];
+  const { setSort } = useContext(PlanetsContext);
+  const [order, setOrder] = useState({ column: 'name', sort: 'ASC' });
+
+  const handleColumnSortChange = (column) => {
+    setOrder({ ...order, column });
+  };
+
+  const handleWaySortChange = (sort) => {
+    setOrder({ ...order, sort });
+  };
+  const options = {
+    name: 'Name',
+    population: 'Population',
+    orbital_period: ' Orbital period',
+    diameter: 'Diameter',
+    rotation_period: 'Rotation period',
+    surface_water: 'Surface water',
+  };
   return (
     <div>
       <select
@@ -26,9 +28,9 @@ const ColumnOrder = () => {
         onChange={ ({ target: { value } }) => handleColumnSortChange(value) }
         data-testid="column-sort"
       >
-        {options.map((option) => (
-          <option key={ option } value={ option }>
-            {option}
+        {Object.entries(options).map((option) => (
+          <option key={ option[0] } value={ option[0] }>
+            {option[1]}
           </option>
         ))}
       </select>
@@ -39,6 +41,7 @@ const ColumnOrder = () => {
         <label htmlFor="sortWay">
           ascendente
           <input
+            defaultChecked
             type="radio"
             name="sortWay"
             id="sortAsc"
@@ -57,6 +60,15 @@ const ColumnOrder = () => {
           />
         </label>
       </div>
+      <button
+        type="button"
+        onClick={ () => {
+          setSort(order);
+        } }
+        data-testid="column-sort-button"
+      >
+        Sort
+      </button>
     </div>
   );
 };

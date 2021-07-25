@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PlanetsContext from '../../context/PlanetsContext';
+import { sortByName, sortByValues } from '../../services/auxFuncs';
 
 const TableBody = () => {
   const {
@@ -7,8 +8,6 @@ const TableBody = () => {
     filteringByName,
     returnFromFilter,
     filters: {
-      filterName,
-      filterNumber,
       sort,
     },
   } = useContext(PlanetsContext);
@@ -19,6 +18,11 @@ const TableBody = () => {
         && data
           .filter((planet) => (filteringByName(planet)))
           .filter((planet) => (returnFromFilter(planet)))
+          .sort((a, b) => {
+            const { column } = sort;
+            if (column === 'name') return sortByName(a, b, sort);
+            return sortByValues(a, b, sort);
+          })
           .map(
             ({
               name,
@@ -36,7 +40,7 @@ const TableBody = () => {
               url,
             }) => (
               <tr key={ name }>
-                <td>{name}</td>
+                <td data-testid="planet-name">{name}</td>
                 <td>{rotationPeriod}</td>
                 <td>{orbitalPeriod}</td>
                 <td>{diameter}</td>
