@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "177f458a3eaead8278a0f574fbeabdd4",
+    "revision": "5a53dee0214166af6a5205f66f639c0a",
     "url": "/starwars-planets-search-context-api/index.html"
   },
   {
-    "revision": "6f8e89f054004973a74a",
+    "revision": "e08c7f53047b6b2e4133",
     "url": "/starwars-planets-search-context-api/static/css/main.0c8dd27f.chunk.css"
   },
   {
-    "revision": "76d4875f930eb24c0584",
-    "url": "/starwars-planets-search-context-api/static/js/2.017d0772.chunk.js"
+    "revision": "6e8f3a2ce5f77ad24c92",
+    "url": "/starwars-planets-search-context-api/static/js/2.a95b55b9.chunk.js"
   },
   {
     "revision": "570d362d673dab785e62d2b8563e1118",
-    "url": "/starwars-planets-search-context-api/static/js/2.017d0772.chunk.js.LICENSE.txt"
+    "url": "/starwars-planets-search-context-api/static/js/2.a95b55b9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6f8e89f054004973a74a",
-    "url": "/starwars-planets-search-context-api/static/js/main.bae8bf38.chunk.js"
+    "revision": "e08c7f53047b6b2e4133",
+    "url": "/starwars-planets-search-context-api/static/js/main.7958dcb6.chunk.js"
   },
   {
     "revision": "e8b32013c019444adc55",
