@@ -58,6 +58,11 @@ const PlanetsProvider = ({ children }) => {
     return !used.includes(option);
   };
 
+  const removeFilterNumber = (index) => {
+    setFilterNumber(filterNumber.filter((filter, i) => i !== index));
+    // console.log(filterNumber.filter((filter, i) => i !== index));
+  };
+
   useEffect(() => {
     fetchPlanets();
   }, []);
@@ -74,6 +79,7 @@ const PlanetsProvider = ({ children }) => {
     filteringByName,
     returnFromFilter,
     returnAlreadyUsedFilter,
+    removeFilterNumber,
   };
   return (
     <PlanetsContext.Provider value={ context }>

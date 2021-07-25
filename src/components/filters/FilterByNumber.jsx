@@ -1,8 +1,11 @@
-import React, { createRef, useContext } from 'react';
+import React, { createRef, useContext, useEffect } from 'react';
 import PlanetsContext from '../../context/PlanetsContext';
 
 const FilterByNumber = () => {
   const { saveFilter, returnAlreadyUsedFilter } = useContext(PlanetsContext);
+
+  useEffect(() => {
+  }, []);
 
   const renderOptions = (options) => options.map((option) => (
     <option key={ option } value={ option }>
