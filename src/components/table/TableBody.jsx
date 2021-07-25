@@ -7,17 +7,22 @@ const TableBody = () => {
     data,
     filteringByName,
     returnFromFilter,
-    filters: {
-      sort,
-    },
+    filters: { sort },
   } = useContext(PlanetsContext);
+
+  const formatDate = (date) => (
+    <>
+      <div>{date.match(/\d*:\d*/)}</div>
+      <div>{date.match(/^\d*-\d*-\d*/)[0].split('-').reverse().join('/')}</div>
+    </>
+  );
 
   return (
     <tbody>
       {data
         && data
-          .filter((planet) => (filteringByName(planet)))
-          .filter((planet) => (returnFromFilter(planet)))
+          .filter((planet) => filteringByName(planet))
+          .filter((planet) => returnFromFilter(planet))
           .sort((a, b) => {
             const { column } = sort;
             if (column === 'name') return sortByName(a, b, sort);
@@ -49,10 +54,18 @@ const TableBody = () => {
                 <td>{terrain}</td>
                 <td>{surfaceWater}</td>
                 <td>{population}</td>
-                <td>{films}</td>
-                <td>{created}</td>
-                <td>{edited}</td>
-                <td>{url}</td>
+                <td>
+                  {films.map((film, i) => (
+                    <p key={ i }>
+                      <a href={ film }>{`Filme ${i + 1}`}</a>
+                    </p>
+                  ))}
+                </td>
+                <td>{formatDate(created)}</td>
+                <td>{formatDate(edited)}</td>
+                <td>
+                  <a href={ url }>{`Link to ${name}`}</a>
+                </td>
               </tr>
             ),
           )}
