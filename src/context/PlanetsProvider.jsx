@@ -6,6 +6,7 @@ const PlanetsProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [filterName, setFilterName] = useState('');
   const [filterNumber, setFilterNumber] = useState([]);
+  const [sort, setSort] = useState({ column: 'Name', sort: 'ASC' });
 
   const fetchPlanets = async () => {
     const PLANETS_URL = 'https://swapi-trybe.herokuapp.com/api/planets/';
@@ -63,6 +64,14 @@ const PlanetsProvider = ({ children }) => {
     // console.log(filterNumber.filter((filter, i) => i !== index));
   };
 
+  const handleColumnSortChange = (column) => {
+    setSort({ ...sort, column });
+  };
+
+  const handleWaySortChange = (way) => {
+    setSort({ ...sort, sort: way });
+  };
+
   useEffect(() => {
     fetchPlanets();
   }, []);
@@ -72,6 +81,7 @@ const PlanetsProvider = ({ children }) => {
     filters: {
       filterName,
       filterNumber,
+      sort,
     },
     setFilterName,
     handleNameInput,
@@ -80,6 +90,8 @@ const PlanetsProvider = ({ children }) => {
     returnFromFilter,
     returnAlreadyUsedFilter,
     removeFilterNumber,
+    handleColumnSortChange,
+    handleWaySortChange,
   };
   return (
     <PlanetsContext.Provider value={ context }>

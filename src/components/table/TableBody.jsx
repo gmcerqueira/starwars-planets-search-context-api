@@ -6,6 +6,11 @@ const TableBody = () => {
     data,
     filteringByName,
     returnFromFilter,
+    filters: {
+      filterName,
+      filterNumber,
+      sort,
+    },
   } = useContext(PlanetsContext);
 
   return (
