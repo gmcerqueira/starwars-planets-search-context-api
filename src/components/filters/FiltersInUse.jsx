@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Badge, CloseButton } from 'react-bootstrap';
 import PlanetsContext from '../../context/PlanetsContext';
 
 const FiltersInUse = () => {
@@ -11,8 +12,10 @@ const FiltersInUse = () => {
       {filterNumber
         && filterNumber.map(({ column, comparison, value }, index) => (
           <div key={ column } data-testid="filter">
-            {`${column} ${comparison} ${value}`}
-            <button type="button" onClick={ () => removeFilterNumber(index) }>X</button>
+            <Badge bg="dark">
+              {`${column} ${comparison} ${value}`}
+              <CloseButton variant="white" onClick={ () => removeFilterNumber(index) } />
+            </Badge>
           </div>
         ))}
     </div>
