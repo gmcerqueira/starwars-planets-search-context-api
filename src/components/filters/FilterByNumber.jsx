@@ -8,20 +8,22 @@ const FilterByNumber = () => {
   }, []);
 
   const renderOptions = (options) => options.map((option) => (
-    <option key={ option } value={ option }>
-      {option}
+    <option key={ option[0] } value={ option[0] }>
+      {option[1]}
     </option>
   ));
 
-  const columnOptions = [
-    'population',
-    'orbital_period',
-    'diameter',
-    'rotation_period',
-    'surface_water',
-  ].filter((option) => returnAlreadyUsedFilter(option));
+  const columnOptions = Object.entries({
+    population: 'Population',
+    orbital_period: ' Orbital period',
+    diameter: 'Diameter',
+    rotation_period: 'Rotation period',
+    surface_water: 'Surface water',
+  }).filter((option) => returnAlreadyUsedFilter(option[0]));
 
-  const comparisonOptions = ['maior que', 'menor que', 'igual a'];
+  const comparisonOptions = Object.entries(
+    { 'maior que': 'maior que', 'menor que': 'menor que', 'igual a': 'igual a' },
+  );
   const columnSelector = createRef();
   const comparisonSelector = createRef();
   const valueSelector = createRef();
