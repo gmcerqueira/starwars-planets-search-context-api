@@ -22,9 +22,9 @@ const FilterByNumber = () => {
   }).filter((option) => returnAlreadyUsedFilter(option[0]));
 
   const comparisonOptions = Object.entries({
-    'maior que': 'maior que',
-    'menor que': 'menor que',
-    'igual a': 'igual a',
+    'greater then': 'greater then',
+    'less then': 'less then',
+    'equals to': 'equals to',
   });
   const columnSelector = createRef();
   const comparisonSelector = createRef();
@@ -32,7 +32,7 @@ const FilterByNumber = () => {
 
   return (
     <Form>
-      <Form.Group>
+      <Form.Group className="mb-2">
         <Form.Label>Column</Form.Label>
         <Form.Select
           ref={ columnSelector }
@@ -43,7 +43,7 @@ const FilterByNumber = () => {
         </Form.Select>
       </Form.Group>
 
-      <Form.Group>
+      <Form.Group className="mb-2">
         <Form.Label>Compare</Form.Label>
         <Form.Select
           ref={ comparisonSelector }
@@ -54,7 +54,7 @@ const FilterByNumber = () => {
         </Form.Select>
       </Form.Group>
 
-      <Form.Group>
+      <Form.Group className="mb-2">
         <Form.Label>Value</Form.Label>
         <Form.Control
           type="number"

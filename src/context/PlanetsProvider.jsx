@@ -39,13 +39,13 @@ const PlanetsProvider = ({ children }) => {
     const comparisonValue = Number(planet[column]);
 
     switch (comparison) {
-    case 'maior que':
+    case 'greater then':
       return comparisonValue > value;
 
-    case 'menor que':
+    case 'less then':
       return comparisonValue < value;
 
-    case 'igual a':
+    case 'equals to':
       return comparisonValue === value;
 
     default:
