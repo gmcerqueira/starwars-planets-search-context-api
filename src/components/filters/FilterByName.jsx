@@ -1,19 +1,20 @@
 import React, { useContext } from 'react';
+import { FormControl, InputGroup } from 'react-bootstrap';
 import PlanetsContext from '../../context/PlanetsContext';
 
 const FilterByName = () => {
   const { handleNameInput } = useContext(PlanetsContext);
   return (
-    <label htmlFor="filterName">
-      Name:
-      <input
-        type="text"
-        name="filterName"
-        id="filterName"
+    <InputGroup className="mb-3">
+      <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
+      <FormControl
+        placeholder="Planet name"
+        aria-label="Planet name"
+        aria-describedby="Search by planet name"
         onChange={ handleNameInput }
         data-testid="name-filter"
       />
-    </label>
+    </InputGroup>
   );
 };
 
