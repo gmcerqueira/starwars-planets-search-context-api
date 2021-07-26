@@ -1,11 +1,11 @@
 import React, { createRef, useContext, useEffect } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import PlanetsContext from '../../context/PlanetsContext';
 
 const FilterByNumber = () => {
   const { saveFilter, returnAlreadyUsedFilter } = useContext(PlanetsContext);
 
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
   const renderOptions = (options) => options.map((option) => (
     <option key={ option[0] } value={ option[0] }>
@@ -21,51 +21,51 @@ const FilterByNumber = () => {
     surface_water: 'Surface water',
   }).filter((option) => returnAlreadyUsedFilter(option[0]));
 
-  const comparisonOptions = Object.entries(
-    { 'maior que': 'maior que', 'menor que': 'menor que', 'igual a': 'igual a' },
-  );
+  const comparisonOptions = Object.entries({
+    'maior que': 'maior que',
+    'menor que': 'menor que',
+    'igual a': 'igual a',
+  });
   const columnSelector = createRef();
   const comparisonSelector = createRef();
   const valueSelector = createRef();
 
   return (
-    <div>
-      <label htmlFor="column-filter">
-        Column:
-        <select
-          name="column-filter"
-          id="column-filter"
+    <Form>
+      <Form.Group>
+        <Form.Label>Column</Form.Label>
+        <Form.Select
           ref={ columnSelector }
+          aria-label="Column filter select"
           data-testid="column-filter"
         >
           {renderOptions(columnOptions)}
-        </select>
-      </label>
-
-      <label htmlFor="comparison-filter">
-        Comparison:
-        <select
-          name="comparison-filter"
-          id="comparison-filter"
+        </Form.Select>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Compare</Form.Label>
+        <Form.Select
           ref={ comparisonSelector }
+          aria-label="Comparasion filter select"
           data-testid="comparison-filter"
         >
           {renderOptions(comparisonOptions)}
-        </select>
-      </label>
+        </Form.Select>
+      </Form.Group>
 
-      <label htmlFor="value-filter">
-        Value:
-        <input
+      <Form.Group>
+        <Form.Label>Value</Form.Label>
+        <Form.Control
           type="number"
-          name="value-filter"
-          id="value-filter"
+          placeholder="Value to compare"
+          aria-label="Value to compare"
+          aria-describedby="Value filter input"
           ref={ valueSelector }
-          data-testid="value-filter"
+          data-testid="name-filter"
         />
-      </label>
-      <button
-        type="button"
+      </Form.Group>
+
+      <Button
         data-testid="button-filter"
         onClick={ () => saveFilter(
           columnSelector.current.value,
@@ -73,9 +73,9 @@ const FilterByNumber = () => {
           valueSelector.current.value,
         ) }
       >
-        Add filter
-      </button>
-    </div>
+        Add
+      </Button>
+    </Form>
   );
 };
 
