@@ -66,6 +66,7 @@ const FilterByNumber = () => {
       </Form.Group>
 
       <Button
+        variant="secondary"
         data-testid="button-filter"
         onClick={ () => saveFilter(
           columnSelector.current.value,
