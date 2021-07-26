@@ -9,15 +9,25 @@ const FiltersInUse = () => {
   } = useContext(PlanetsContext);
   return (
     <div>
-      {filterNumber
-        && filterNumber.map(({ column, comparison, value }, index) => (
-          <div key={ column } data-testid="filter">
-            <Badge bg="dark">
-              {`${column} ${comparison} ${value}`}
-              <CloseButton variant="white" onClick={ () => removeFilterNumber(index) } />
-            </Badge>
+      {filterNumber.length > 0
+        && (
+          <div>
+            <h2>
+              Filters in use
+            </h2>
+            {filterNumber.map(({ column, comparison, value }, index) => (
+              <div key={ column } data-testid="filter">
+                <Badge bg="secondary">
+                  {`${column} ${comparison} ${value}`}
+                  <CloseButton
+                    variant="white"
+                    onClick={ () => removeFilterNumber(index) }
+                  />
+                </Badge>
+              </div>
+            ))}
           </div>
-        ))}
+        )}
     </div>
   );
 };

@@ -6,10 +6,9 @@ import TableHeader from './TableHeader';
 const DataTable = () => (
   <Table
     striped
-    bordered
     hover
     variant="dark"
-    className="text-center text-capitalize"
+    className="text-center text-capitalize align-middle overflow-auto my-0"
   >
     <TableHeader />
     <TableBody />
