@@ -1,12 +1,13 @@
 import React from 'react';
+import { Table } from 'react-bootstrap';
 import TableBody from './TableBody';
 import TableHeader from './TableHeader';
 
 const DataTable = () => (
-  <table>
+  <Table striped bordered hover variant="dark">
     <TableHeader />
     <TableBody />
-  </table>
+  </Table>
 );
 
 export default DataTable;
