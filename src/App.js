@@ -8,6 +8,10 @@ import PlanetsProvider from './context/PlanetsProvider';
 function App() {
   return (
     <PlanetsProvider>
+      <div className="text-center mt-3 mb-5">
+        <h1>START WARS</h1>
+        <h2>Planets search</h2>
+      </div>
       <div className="d-flex">
         <div className="w-25">
           <DataOptions />

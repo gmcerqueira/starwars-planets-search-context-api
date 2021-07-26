@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Alert } from 'react-bootstrap';
 import PlanetsContext from '../../context/PlanetsContext';
 import { sortByName, sortByValues } from '../../services/auxFuncs';
 
@@ -56,15 +57,17 @@ const TableBody = () => {
                 <td>{population}</td>
                 <td>
                   {films.map((film, i) => (
-                    <p key={ i }>
-                      <a href={ film }>{i + 1}</a>
-                    </p>
+                    <Alert key={ i } variant="dark" className="my-2 p-2">
+                      <Alert.Link href={ film } target="_blank">{i + 1}</Alert.Link>
+                    </Alert>
                   ))}
                 </td>
                 <td>{formatDate(created)}</td>
                 <td>{formatDate(edited)}</td>
                 <td>
-                  <a href={ url }>Link</a>
+                  <Alert variant="dark" className="my-1">
+                    <Alert.Link href={ url } target="_blank">Link</Alert.Link>
+                  </Alert>
                 </td>
               </tr>
             ),
