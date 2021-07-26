@@ -5,9 +5,9 @@ import PlanetsContext from '../../context/PlanetsContext';
 const FilterByName = () => {
   const { handleNameInput } = useContext(PlanetsContext);
   return (
-    <Form className="mb-3">
+
+    <Form>
       <Form.Group>
-        <Form.Label id="basic-addon1">Name</Form.Label>
         <Form.Control
           placeholder="Planet name"
           aria-label="Planet name"

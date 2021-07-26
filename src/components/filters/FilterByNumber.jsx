@@ -42,6 +42,7 @@ const FilterByNumber = () => {
           {renderOptions(columnOptions)}
         </Form.Select>
       </Form.Group>
+
       <Form.Group>
         <Form.Label>Compare</Form.Label>
         <Form.Select

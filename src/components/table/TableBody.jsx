@@ -57,14 +57,14 @@ const TableBody = () => {
                 <td>
                   {films.map((film, i) => (
                     <p key={ i }>
-                      <a href={ film }>{`Filme ${i + 1}`}</a>
+                      <a href={ film }>{i + 1}</a>
                     </p>
                   ))}
                 </td>
                 <td>{formatDate(created)}</td>
                 <td>{formatDate(edited)}</td>
                 <td>
-                  <a href={ url }>{`Link to ${name}`}</a>
+                  <a href={ url }>Link</a>
                 </td>
               </tr>
             ),
